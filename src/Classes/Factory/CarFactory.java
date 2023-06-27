@@ -22,15 +22,16 @@ public class CarFactory {
         return instance;
     }
 
-    public Car makeCar(String seatName, String engineName, String doorName) {
+    public Car makeCar(String seatName, String engineName, String doorName, String carName) {
         Engine engine = new Engine(engineName);
         Seat seat = new Seat(seatName);
         Door door = new Door(doorName);
 
-        Car car = new Car(seat, engine, door);
+        Car car = new Car(seat, engine, door, carName);
 
-        String carDescription = car.getDescription();
-        carCounts.put(carDescription, carCounts.getOrDefault(carDescription, 0) + 1);
+        String carDescription = car.toString(); // Key to get the similar cars
+        int count = carCounts.getOrDefault(carDescription,0);
+        carCounts.put(carDescription, count + 1);
 
         return car;
     }

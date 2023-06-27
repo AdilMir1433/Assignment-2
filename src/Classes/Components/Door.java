@@ -2,17 +2,20 @@ package Classes.Components;
 
 import AbstractClasses.CarComponent;
 
-public class Door extends CarComponent {
+public class Door{
+
+    private final String componentName;
     public Door() {
-        super("Door"); //default
+        this.componentName = "Door";
     }
 
     public Door(String name) {
-        super(name);
+        if(name.isBlank() && name.isEmpty()) name = "Default Door";
+        this.componentName = name;
     }
 
     @Override
-    public String getDescription() {
+    public String toString() {
         return "Door: " + componentName;
     }
 }
